@@ -1,7 +1,7 @@
 {
     "scripts": {
-        "cs-fix": "php vendor/bin/php-cs-fixer fix",
-        "cs-diff": "php vendor/bin/php-cs-fixer check --diff"
+        "cs-fix": "php vendor/bin/php-cs-fixer fix -v",
+        "cs-diff": "php vendor/bin/php-cs-fixer check -v --diff"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.56"
