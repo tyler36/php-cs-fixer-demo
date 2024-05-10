@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: "🗄️ cache"
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .php-cs-fixer.cache
           key: ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-${{ github.sha }}

@@ -1,0 +1,35 @@
+stages:
+  - build
+  - lint
+
+cache:
+  paths:
+    - .tmp/
+    - vendor/
+    - web/
+
+composer:
+  stage: build
+  image: composer:2.4
+  # Some helpful debugging
+  before_script:
+    - php -v
+    - composer --version
+  script:
+    - composer install --ignore-platform-reqs
+
+'php-cs-fixer':
+  stage: lint
+  extends: composer
+  script: |
+    set +euo pipefail  # don't abort if any following command fails
+    vendor/bin/php-cs-fixer check -v --format=gitlab --diff --using-cache=no > logs/php-cs-fixer.json
+    vendor/bin/php-cs-fixer check -v --format=junit --diff --using-cache=no > logs/php-cs-fixer-junit.xml
+  artifacts:
+    when: always
+    paths:
+      - logs/php-cs-fixer.json
+      - logs/php-cs-fixer-junit.xml
+    reports:
+      junit: logs/php-cs-fixer-junit.xml
+      codequality: logs/php-cs-fixer.json
