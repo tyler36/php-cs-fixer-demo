@@ -12,6 +12,7 @@
   - [Risky Rules](#risky-rules)
   - [YOUR rules](#your-rules)
 - [Migration helpers](#migration-helpers)
+- [VSCode extension](#vscode-extension)
 
 ## Overview
 
@@ -213,4 +214,22 @@ For example:
 $name = 'World';
 -echo "Hello ${name}!";
 +echo "Hello {$name}!";
+```
+
+## VSCode extension
+
+Homepage: [junstyle.php-cs-fixer](https://marketplace.visualstudio.com/items?itemName=junstyle.php-cs-fixer)
+
+```json
+{
+  "[php]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+  },
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  "php-cs-fixer.config": ".php-cs-fixer.dist.php",
+  "php-cs-fixer.onsave": true,
+  "php-cs-fixer.formatHtml": true,
+  "php-cs-fixer.allowRisky": false,
+}
 ```
