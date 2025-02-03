@@ -36,4 +36,4 @@ jobs:
       - name: "🧹 run PHP-CS-Fixer"
         uses: docker://oskarstark/php-cs-fixer-ga:latest
         with:
-          args: --config=.php-cs-fixer.dist.php --diff -v
+          args: --config=.php-cs-fixer.dist.php --diff -v --stop-on-violation
