@@ -22,21 +22,10 @@ jobs:
     steps:
       - name: "☁️ checkout repository"
         uses: actions/checkout@v4
-
-      - name: "🗄️ cache"
-        uses: actions/cache@v4
         with:
-          path: .php-cs-fixer.cache
-          key: ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-
+          persist-credentials: false
 
       - name: "🧹 run PHP-CS-Fixer"
-        uses: docker://oskarstark/php-cs-fixer-ga
+        uses: docker://oskarstark/php-cs-fixer-ga:latest
         with:
-          args: --config=.php-cs-fixer.dist.php
-
-      - name: "🤖 commit fixed code"
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'fix: Apply PHP-CS-FIXER changes'
+          args: --config=.php-cs-fixer.dist.php --diff -v --dry-run
