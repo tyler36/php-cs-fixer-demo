@@ -34,7 +34,7 @@ jobs:
             ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-
 
       - name: "🧹 run PHP-CS-Fixer"
-        uses: docker://oskarstark/php-cs-fixer-ga
+        uses: docker://oskarstark/php-cs-fixer-ga:latest
         with:
           args: --config=.php-cs-fixer.dist.php
 
