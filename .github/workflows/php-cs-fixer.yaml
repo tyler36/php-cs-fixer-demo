@@ -25,15 +25,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: "🗄️ cache"
-        uses: actions/cache@v4
-        with:
-          path: .php-cs-fixer.cache
-          key: ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-
-
       - name: "🧹 run PHP-CS-Fixer"
         uses: docker://oskarstark/php-cs-fixer-ga:latest
         with:
-          args: --config=.php-cs-fixer.dist.php --diff -v --stop-on-violation --using-cache=no
+          args: --config=.php-cs-fixer.dist.php --diff -v --stop-on-violation 
