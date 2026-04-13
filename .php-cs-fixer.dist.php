@@ -11,7 +11,7 @@ return (new Config())
         // @see https://mlocati.github.io/php-cs-fixer-configurator
         '@PER-CS' => true,
         '@PhpCsFixer' => true,
-        '@PHP83Migration' => true,
+        '@PHP8x3Migration' => true,
         'concat_space' => ['spacing' => 'one'],
         'multiline_whitespace_before_semicolons' => false,
         'no_short_bool_cast' => true,
